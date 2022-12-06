@@ -36,16 +36,16 @@ END
 #
 systemctl stop docker 2>/dev/null
 rm -rf /var/lib/docker 2>/dev/null
-mkdir -p /home/est-devops/omd/docker 2>/dev/null
-ln -s /home/est-devops/omd/docker /var/lib/docker 2>/dev/null 
+mkdir -p /home/epx-devops/omd/docker 2>/dev/null
+ln -s /home/epx-devops/epx/docker /var/lib/docker 2>/dev/null 
 touch /etc/docker/daemon.json 2>/dev/null 
 sudo tee -a /etc/docker/daemon.json > /dev/null <<EOT
 {
-"data-root": "/home/est-devops/omd/docker"
+"data-root": "/home/epx-devops/epx/docker"
 }
 EOT
 systemctl restart docker 2>/dev/null
 docker system prune -af 2>/dev/null
-usermod -aG docker est-devops 2>/dev/null
-usermod -aG sudo est-devops
+usermod -aG docker epx-devops 2>/dev/null
+usermod -aG sudo epx-devops
 
